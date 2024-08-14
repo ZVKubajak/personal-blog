@@ -11,8 +11,7 @@ function getFormData () {
     content: document.getElementById('content').value
   };
 
-  console.log(formData);
-  
+  localStorage.setItem('formData', JSON.stringify(formData));
 }
 
 function formSubmission () {
