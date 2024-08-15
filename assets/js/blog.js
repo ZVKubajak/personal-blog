@@ -7,8 +7,6 @@ const backButton = document.getElementById('back');
 
 function buildElement () {
 
-  const formData = JSON.parse(localStorage.getItem('formData'));
-
   const ul = document.createElement('ul');
     const li = document.createElement('li');
       const article = document.createElement('article');
@@ -26,12 +24,6 @@ function buildElement () {
         article.appendChild(blockquote);
         article.appendChild(p);
 }
-
-buildElement();
-buildElement();
-buildElement();
-buildElement();
-buildElement();
 
 // TODO: Create a function that handles the case where there are no blog posts to display
 
