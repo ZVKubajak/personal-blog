@@ -30,8 +30,8 @@ function buildElement() {
 // TODO: Create a function that handles the case where there are no blog posts to display
 
 function noPosts() {
-  console.log('No posts to display.');
   localStorage.removeItem('blogData');
+  redirectPage('index.html');
 
   return;
 }
@@ -43,7 +43,7 @@ function renderBlogList() {
 
   blogData = JSON.parse(localStorage.getItem('blogData'));
 
-  if (blogData[0] === null) {
+  if (blogData === null) {
     noPosts();
   } else {
     blogData.forEach((post) => {

@@ -21,7 +21,7 @@ toggleMode.addEventListener('click', function () {
 
 // TODO: Create a function called `readLocalStorage` that reads from local storage and returns the data. If no data exists, return an empty array.
 
-// Implement the following code into a function.
+// readLocalStorage
 
 let blogData = JSON.parse(localStorage.getItem('blogData'));
 
