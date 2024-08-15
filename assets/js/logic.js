@@ -32,15 +32,21 @@ if (!blogData) {
 // TODO: Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing blog data in local storage.
 
 function storeLocalStorage() {
-  const formData = JSON.parse(localStorage.getItem('formData'));
-  blogData.push(formData);
 
-  const updatedBlogData = JSON.stringify(blogData);
-  localStorage.setItem('blogData', updatedBlogData);
+  let formData = JSON.parse(localStorage.getItem('formData'));
 
-  console.log(JSON.parse(localStorage.getItem('blogData')));
+  if (!formData) {
+    console.log(JSON.parse(localStorage.getItem('blogData')));
+    return;
+  } else {
+    blogData.push(formData);
+    const updatedBlogData = JSON.stringify(blogData);
+    localStorage.setItem('blogData', updatedBlogData);
+    localStorage.removeItem('formData');
 
-  return;
+    console.log(JSON.parse(localStorage.getItem('blogData')));
+    return;
+  }
 }
 
 // ! Use the following function whenever you need to redirect to a different page

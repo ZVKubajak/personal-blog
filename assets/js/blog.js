@@ -23,6 +23,8 @@ function buildElement() {
         article.appendChild(h2);
         article.appendChild(blockquote);
         article.appendChild(p);
+
+  return;
 }
 
 // TODO: Create a function that handles the case where there are no blog posts to display
@@ -44,15 +46,18 @@ function renderBlogList() {
   if (blogData[0] === null) {
     noPosts();
   } else {
-
+    blogData.forEach((post) => {
+      formData = post;
+      buildElement();
+    });
   }
-}
 
-renderBlogList();
+  return;
+}
 
 // TODO: Call the `renderBlogList` function
 
-// renderBlogList();
+renderBlogList();
 
 // TODO: Redirect to the home page using the `redirectPage` function found in logic.js when the back button is clicked
 
