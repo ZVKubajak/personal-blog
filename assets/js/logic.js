@@ -34,12 +34,12 @@ function readLocalStorage() {
 */
 
 function readLocalStorage() {
-  let blogData = localStorage.getItem('blogData');
+  let blogData = localStorage.getItem('blogs');
 
   if (!blogData) {
     blogData = [];
   } else {
-    JSON.parse(blogData);
+    blogData = JSON.parse(blogData);
   }
 
   return blogData;
@@ -69,22 +69,20 @@ function storeLocalStorage(formData) {
 }
 */
 
-// Why is blogData not an array? It looks like an array in LS.
+// Why is blogData not an array?
 
 function storeLocalStorage(formData) {
   let blogData = readLocalStorage();
-  let parsedData = JSON.parse(formData);
 
-  if (!parsedData) {
-    console.log(JSON.parse(localStorage.getItem('blogData')));
+  if (!formData) {
+    // console.log(JSON.parse(localStorage.getItem('blogs')));
     return;
   } else {
-    blogData.push(parsedData);
+    blogData.push(formData);
     const updatedBlogData = JSON.stringify(blogData);
-    localStorage.setItem('blogData', updatedBlogData);
-    localStorage.removeItem(formData);
+    localStorage.setItem('blogs', updatedBlogData);
 
-    console.log(JSON.parse(localStorage.getItem('blogData')));
+    console.log(JSON.parse(localStorage.getItem('blogs')));
     return;
   }
 }
