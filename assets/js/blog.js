@@ -39,7 +39,7 @@ function noPosts() {
 // TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.
 
 function renderBlogList() {
-  storeLocalStorage();
+  storeLocalStorage(localStorage.getItem('formData'));
 
   blogData = JSON.parse(localStorage.getItem('blogData'));
 

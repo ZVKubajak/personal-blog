@@ -21,17 +21,36 @@ toggleMode.addEventListener('click', function () {
 
 // TODO: Create a function called `readLocalStorage` that reads from local storage and returns the data. If no data exists, return an empty array.
 
-// readLocalStorage
+// Moved the code into the function.
 
-let blogData = JSON.parse(localStorage.getItem('blogData'));
+/*
+function readLocalStorage() {
+  let blogData = JSON.parse(localStorage.getItem('blogData'));
 
-if (!blogData) {
-  blogData = [];
+  if (!blogData) {
+    blogData = [];
+  }
+}
+*/
+
+function readLocalStorage() {
+  let blogData = localStorage.getItem('blogData');
+
+  if (!blogData) {
+    blogData = [];
+  } else {
+    JSON.parse(blogData);
+  }
+
+  return blogData;
 }
 
 // TODO: Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing blog data in local storage.
 
-function storeLocalStorage() {
+// Added parameter.
+
+/*
+function storeLocalStorage(formData) {
 
   let formData = JSON.parse(localStorage.getItem('formData'));
 
@@ -43,6 +62,27 @@ function storeLocalStorage() {
     const updatedBlogData = JSON.stringify(blogData);
     localStorage.setItem('blogData', updatedBlogData);
     localStorage.removeItem('formData');
+
+    console.log(JSON.parse(localStorage.getItem('blogData')));
+    return;
+  }
+}
+*/
+
+// Why is blogData not an array? It looks like an array in LS.
+
+function storeLocalStorage(formData) {
+  let blogData = readLocalStorage();
+  let parsedData = JSON.parse(formData);
+
+  if (!parsedData) {
+    console.log(JSON.parse(localStorage.getItem('blogData')));
+    return;
+  } else {
+    blogData.push(parsedData);
+    const updatedBlogData = JSON.stringify(blogData);
+    localStorage.setItem('blogData', updatedBlogData);
+    localStorage.removeItem(formData);
 
     console.log(JSON.parse(localStorage.getItem('blogData')));
     return;
